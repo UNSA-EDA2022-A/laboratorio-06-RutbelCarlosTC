@@ -14,7 +14,7 @@ public class Exercise2 {
             tree1.insert(value);
             tree2.insert(value);
         }
-
+        
         System.out.print(obj.bstIguales(tree1, tree2));
         
     }
@@ -22,6 +22,13 @@ public class Exercise2 {
 
     public <T extends Comparable<T>> boolean bstIguales(BST<T> a1, BST<T> a2){
 
-        return false;
+        return nodosIguales(a1.root, a2.root);
+    }
+    public <T extends Comparable<T>> boolean nodosIguales(Node<T> n1, Node<T> n2){
+        if(n1 == null && n2 == null)
+            return true;
+        else if(n1 == null || n2 == null)
+            return false;
+        return ((n1.data.compareTo(n2.data) == 0) && nodosIguales(n1.left, n2.left) && nodosIguales(n1.right, n2.right));
     }
 }
